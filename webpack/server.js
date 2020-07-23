@@ -10,6 +10,21 @@ if(Object.keys(webCfg.getEntry()).length == 0){
     return 
 }
 var hotConfig = [
-    ` webpack-dev-server/client?http://${webCfg.config.devServer}:${webCfg.config.port}`,
+    `webpack-dev-server/client?http://${webCfg.config.devServer}:${webCfg.config.port}`,
     'webpack/hot/dev-server'
 ]
+
+for(let item in config.entry){
+    config.entry[item] = hotConfig.concat(config.entry[item])
+}
+console.log(config)
+var compiler = webpack(config);
+var server = new webpackDevServer(compiler,{
+    contentBase:'build/',
+    publicPath:'/',
+    hot:true,
+    noInfo:true,
+    stats:'errors-only',
+    host:'0.0.0.0'
+})
+server.listen(webCfg.config.port,'0.0.0.0')
