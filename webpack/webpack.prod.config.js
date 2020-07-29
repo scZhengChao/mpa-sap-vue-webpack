@@ -29,12 +29,11 @@ let debConfig = {
                         beautify:false
                     },
                     compress:{
-                        warnings:false
+                        // warnings:false
                     }
                 }
             }),
             new OptimizeCSSAssetsPlugin()
-
         ]
     },
     plugins:[
@@ -47,7 +46,7 @@ let debConfig = {
                     comments:false
                 },
                 compress:{
-                    warnings:false,
+                    // warnings:false,
                     'drop_debugger':true,
                     'drop_console':true
                 }
