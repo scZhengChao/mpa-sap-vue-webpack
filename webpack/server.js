@@ -24,25 +24,25 @@ let devServerOptions  = {
     contentBase:'build/',
     publicPath:'/',
     compress:true,
-    watchOptions:{
-        ignored:/node_modules/,
-        aggregateTimeout:300,//防止重复保存 频繁重新编译，300ms内重复保存不打包
-        poll:1000 //每秒询问的文件变更的次数
-    },
+    // watchOptions:{
+    //     ignored:/node_modules/,
+    //     aggregateTimeout:300,//防止重复保存 频繁重新编译，300ms内重复保存不打包
+    //     poll:1000 //每秒询问的文件变更的次数
+    // },
     hot:true,
     noInfo:true,
     stats:'errors-only',
-    host:'127.0.0.1',
+    host:'localhost',
     https: false,
     open:true,
     openPage: Object.keys(config.entry),
-    overlay: {
-        errors: true
-    },
+    // overlay: {
+    //     errors: true
+    // },
     port:8080,
     proxy:{
 
     }
 }
 var server = new webpackDevServer(compiler,devServerOptions )
-server.listen(webCfg.config.port,'127.0.0.1')
+server.listen(webCfg.config.port,'localhost')

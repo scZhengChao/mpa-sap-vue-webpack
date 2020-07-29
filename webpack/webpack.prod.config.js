@@ -14,7 +14,7 @@ const BundlAnanlyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 let debConfig = {
     entry:entry,
     output:{
-        publicPath:'/',
+        publicPath:'',
         filename:`[name].${_version}.js`
     },
     devtool:'inline-source-map',
@@ -29,7 +29,7 @@ let debConfig = {
                         beautify:false
                     },
                     compress:{
-                        warnings:false
+                        // warnings:false
                     }
                 }
             }),
@@ -46,7 +46,7 @@ let debConfig = {
                     comments:false
                 },
                 compress:{
-                    warnings:false,
+                    // warnings:false,
                     'drop_debugger':true,
                     'drop_console':true
                 }
@@ -83,7 +83,7 @@ for(item in entry){
             chunks:[item],
             minify:{
                 removeAttributeQuotes:true,
-                collapseWhitespace:true,
+                collapseWhitespace:true, 
                 html5:true,
                 minifyJS:true,
                 minifyCSS:true,
