@@ -29,7 +29,7 @@ let debConfig = {
                         beautify:false
                     },
                     compress:{
-                        // warnings:false
+                        warnings:false
                     }
                 }
             }),
@@ -46,7 +46,7 @@ let debConfig = {
                     comments:false
                 },
                 compress:{
-                    // warnings:false,
+                    warnings:false,
                     'drop_debugger':true,
                     'drop_console':true
                 }
