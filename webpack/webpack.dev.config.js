@@ -22,11 +22,11 @@ let debConfig = {
     },
     mode:'development',
     devtool:'source-map',
-    watchOptions:{
-        ignored:/node_modules/,
-        aggregateTimeout:300,//防止重复保存 频繁重新编译，300ms内重复保存不打包
-        poll:1000 //每秒询问的文件变更的次数
-    },
+    // watchOptions:{
+    //     ignored:/node_modules/,
+    //     aggregateTimeout:300,//防止重复保存 频繁重新编译，300ms内重复保存不打包
+    //     poll:1000 //每秒询问的文件变更的次数
+    // },
     optimization:{
         minimize:false
     },
@@ -53,7 +53,7 @@ let debConfig = {
             verbose:false
         }),
         new webpack.NamedModulesPlugin(),
-        new webpack.HotModuleReplacementPlugin(),
+        // new webpack.HotModuleReplacementPlugin(),
         new FriendlyErrorsPlugin({
             compilationSuccessInfo:{
                 messages:conlg
