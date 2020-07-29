@@ -38,8 +38,8 @@ const config = {
     entry:resolve('../src/app/'),
     publicPath:'/',
     outPath:resolve('../build'),
-    devServer:'127.0.0.1',
-    port:'9000',
+    devServer:'localhost',
+    port:'9006',
     distPath:'',
     vueLoader:vueLoader[TARGET],
     clientItem:clientItem[TARGET] && clientItem[TARGET].toString().replace('/[,，=]/',',').split(','), //支持开启多个‘,’ 分割
@@ -52,7 +52,7 @@ const isFile = v =>fs.pathExistsSync(v)
 //获取webpack entry 入口 包名和对应的js主入口
 const getEntry = ()=>{
     let entryObj = {}
-    if(!config.clientItem) return
+    if(!config.clientItem) throw new Error('没有找到对应入口')
     config.clientItem.forEach(item=>{
         let file = glob.sync(resolve(`../src/app/${item}/index.js`)).toString()
         isFile(file)?entryObj[item] = file:entryObj={}

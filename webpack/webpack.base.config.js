@@ -5,14 +5,13 @@ const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const _version = new Date().getTime()
 
-
 module.exports = {
     resolve:{
         alias:{
             '@':path.join(__dirname,"..","src")
         },
         modules:['node_modules','.'],
-        extensions:['.ts','.tsx','.js','.jsx','.json','.veu']
+        extensions:['.ts','.tsx','.js','.jsx','.json','.vue']
     },
     module:{
         rules:[
@@ -96,7 +95,7 @@ module.exports = {
                     }
                 },
                 exclude:/node_modules/,
-                include:[process.cwd(),'./src']
+                include:path.join(process.cwd(),'./src')
             },
             {
                 test:/\.(gif|png|jpe?g|svg)$/i,
