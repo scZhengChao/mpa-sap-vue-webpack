@@ -5,6 +5,7 @@
     骑着我心爱的小摩托
     <div class="box">
         zhehsi test 
+        <p>uuuuu222222</p>
     </div>
         <com1></com1>
 </div>
@@ -31,6 +32,9 @@ export default {
         background-color: brown;
         overflow: hidden;
         text-align: center;
-        
+
+        p {
+            color:red;
+        }
     }
 </style>
