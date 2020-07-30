@@ -24,11 +24,11 @@ let devServerOptions  = {
     contentBase:'build/',
     publicPath:'/',
     compress:true,
-    // watchOptions:{
-    //     ignored:/node_modules/,
-    //     aggregateTimeout:300,//防止重复保存 频繁重新编译，300ms内重复保存不打包
-    //     poll:1000 //每秒询问的文件变更的次数
-    // },
+    watchOptions:{
+        ignored:/node_modules/,
+        aggregateTimeout:300,//防止重复保存 频繁重新编译，300ms内重复保存不打包
+        poll:1000 //每秒询问的文件变更的次数
+    },
     hot:true,
     noInfo:true,
     stats:'errors-only',
@@ -36,10 +36,15 @@ let devServerOptions  = {
     https: false,
     open:true,
     openPage: Object.keys(config.entry),
-    // overlay: {
-    //     errors: true
-    // },
-    port:8080,
+    overlay: {
+        errors: true
+    },
+    port:9007,
+    hotOnly:false,
+    headers:{
+        'Access-Control-Allow-Origin':'*'
+    },
+    disableHostCheck:true,
     proxy:{
 
     }

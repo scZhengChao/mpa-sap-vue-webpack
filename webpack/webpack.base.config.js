@@ -8,7 +8,8 @@ const _version = new Date().getTime()
 module.exports = {
     resolve:{
         alias:{
-            '@':path.join(__dirname,"..","src")
+            '@':path.join(__dirname,"..","src"),
+            '@a':path.join(__dirname,"..","src/app"),
         },
         modules:['node_modules','.'],
         extensions:['.ts','.tsx','.js','.jsx','.json','.vue']

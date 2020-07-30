@@ -1,7 +1,7 @@
 <template>
 <div>
     app1
-
+    {{config.url}}
     骑着我心爱的小摩托
     <div class="box">
         zhehsi test 
@@ -15,6 +15,12 @@
 export default {
     components:{
         com1
+    },
+    data(){return{
+        config:this.$myGlobal
+    }},
+    created(){
+      
     }
 }
 </script>

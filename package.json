@@ -4,8 +4,10 @@
   "description": "本身其实是单页面 但是为了共用同一套架构 多个单页面耦合在一起\r 为了最大的解耦；产生现在这个架构",
   "main": "",
   "scripts": {
-    "dev": "node ./webpack/server.js",
-    "build": "node ./webpack/build.js",
+    "dev": "cross-env NODE_ENV=development node ./webpack/server.js ",
+    "build": "cross-env NODE_ENV=production node ./webpack/build.js ",
+    "build:uat": "cross-env NODE_ENV=uat node ./webpack/build.js ",
+    "build:sit": "cross-env NODE_ENV=sit node ./webpack/build.js ",
     "dll": "webpack --progress --config webpack/webpack.dll.config.js",
     "create": "node ./webpack/webpack.create.config.js"
   },

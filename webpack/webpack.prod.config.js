@@ -21,15 +21,21 @@ let debConfig = {
     mode:'production',
     optimization:{
         minimizer:[
-            new UglifyJsPlugin({
-                parallel:4,
+            new UglifyJsPlugin({ 
+                cache: true, //是否启用文件缓存
+                parallel: true,// 多进程提高构建速度
+                sourceMap: false,
                 uglifyOptions:{
+                    warnings:false,//删除无用代码时不输出警告
                     output:{
-                        comments:false,
-                        beautify:false
+                        comments:false,//删除所有注释
+                        beautify:false //最紧凑的输出，不保留空格和制表符
+                        
                     },
                     compress:{
-                        // warnings:false
+                        drop_console: true, //删除所有console语句，可以兼容IE
+                        collapse_vars: true, //内嵌已定义但只使用一次的变量
+                        reduce_vars: true, //提取使用多次但没定义的静态值到变量
                     }
                 }
             }),
