@@ -18,7 +18,7 @@ var hotConfig = [
 for(let item in config.entry){
     config.entry[item] = hotConfig.concat(config.entry[item])
 }
-console.log()
+
 var compiler = webpack(config);
 let devServerOptions  = {
     contentBase:'build/',
@@ -39,7 +39,7 @@ let devServerOptions  = {
     overlay: {
         errors: true
     },
-    port:9007,
+    port:webCfg.config.port,
     hotOnly:false,
     headers:{
         'Access-Control-Allow-Origin':'*'

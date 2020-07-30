@@ -8,6 +8,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin');
+const webpack = require('webpack')
 const entry = config.getEntry()
 const _version = new Date().getTime()
 const BundlAnanlyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin

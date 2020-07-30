@@ -39,7 +39,7 @@ const config = {
     publicPath:'/',
     outPath:resolve('../build'),
     devServer:'localhost',
-    port:'9006',
+    port:'9007',
     distPath:'',
     vueLoader:vueLoader[TARGET],
     clientItem:clientItem[TARGET] && clientItem[TARGET].toString().replace('/[,，=]/',',').split(','), //支持开启多个‘,’ 分割

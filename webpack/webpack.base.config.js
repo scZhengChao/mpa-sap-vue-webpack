@@ -12,7 +12,8 @@ module.exports = {
             '@a':path.join(__dirname,"..","src/app"),
         },
         modules:['node_modules','.'],
-        extensions:['.ts','.tsx','.js','.jsx','.json','.vue']
+        extensions:['.ts','.tsx','.js','.jsx','.json','.vue'],
+        mainFields: ['jsnext:main', 'browser', 'main']
     },
     module:{
         rules:[
@@ -132,6 +133,7 @@ module.exports = {
     plugins:[
         new webpack.NoEmitOnErrorsPlugin(),
         new ProgressBarPlugin(),
-        new VueLoaderPlugin()
+        new VueLoaderPlugin(),
+        new webpack.optimize.ModuleConcatenationPlugin()
     ]
 }

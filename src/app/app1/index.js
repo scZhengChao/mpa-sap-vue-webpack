@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import App from 'app.vue';
+import App from './app.vue';
 import config  from './config'
 
 Vue.prototype.$myGlobal = config
