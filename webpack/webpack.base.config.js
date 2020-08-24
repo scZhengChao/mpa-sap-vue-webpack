@@ -12,8 +12,7 @@ module.exports = {
             '@a':path.join(__dirname,"..","src/app"),
         },
         modules:['node_modules','.'],
-        extensions:['.ts','.tsx','.js','.jsx','.json','.vue'],
-        mainFields: ['jsnext:main', 'browser', 'main']
+        extensions:['.ts','.tsx','.js','.jsx','.json','.vue']
     },
     module:{
         rules:[
