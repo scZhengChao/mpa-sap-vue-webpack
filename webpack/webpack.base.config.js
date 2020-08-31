@@ -133,6 +133,9 @@ module.exports = {
         new webpack.NoEmitOnErrorsPlugin(),
         new ProgressBarPlugin(),
         new VueLoaderPlugin(),
-        new webpack.optimize.ModuleConcatenationPlugin()
+        new webpack.optimize.ModuleConcatenationPlugin(),
+        new webpack.DefinePlugin({
+            'process.env.NODE_APP':JSON.stringify(process.env.NODE_APP)
+        })
     ]
 }
