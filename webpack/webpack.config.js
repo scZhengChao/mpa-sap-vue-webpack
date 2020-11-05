@@ -63,6 +63,7 @@ module.exports = {
     getEntry,
     config,
     isFile,
-    getIPAdress
+    getIPAdress,
+    _version:new Date().getTime()
 }
 

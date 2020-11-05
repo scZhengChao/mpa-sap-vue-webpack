@@ -10,13 +10,13 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin');
 const webpack = require('webpack')
 const entry = config.getEntry()
-const _version = new Date().getTime()
+
 const BundlAnanlyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 let debConfig = {
     entry:entry,
     output:{
         publicPath:'',
-        filename:`[name].${_version}.js`  //name 是对entry中条目key的引用
+        filename:`[name].${config._version}.js`  //name 是对entry中条目key的引用
     },
     devtool:'inline-source-map',
     mode:'production',
@@ -45,7 +45,11 @@ let debConfig = {
     },
     plugins:[
         new MiniCssExtractPlugin({
-            filename:`[name].${_version}.css`,
+            // 这里的配置和webpackOptions.output中的配置相似
+            // 即可以通过在名字前加路径，来决定打包后的文件存在的路径
+            //filename: devMode ? 'css/[name].css' : 'css/[name].[hash].css',
+            //chunkFilename: devMode ? 'css/[id].css' : 'css/[id].[hash].css',
+            filename:`[name].${config._version}.css`,
         }),
         new ParallelUglifyPlugin({
             uglifyJS:{
@@ -67,39 +71,6 @@ let clearBuild = [];
 
 for(item in entry){
     clearBuild.push(`${item}/*`)
-    debConfig.output.path =path.resolve(__dirname,`../build/${item}`)
-    let templist = path.join(config.config.root,`./src/${entry[item].replace(/^.+src\/|\/.+$/g,'')}/${item}/index.html`);
-    if(!config.isFile(templist)){
-        templist = path.join(config.config.root,`./webpack/${entry[item].replace(/^.+src\/|\/.+$/g,'')}-template/index.html`)
-    }
-   
-    // 此处循环添加htmlwebpackplugins 的主要目的为了多入口多出口 https://blog.csdn.net/D_Z_Yong/article/details/102891802
-    debConfig.plugins.push(
-        new HtmlWebpackPlugin({
-            filename:'index.html', //   相对于output.path
-            template:templist.replace(/\\/g,'/'), //输入文件的相对根目录所在的目录；这个地方为绝对路径
-            inject:true,
-            title:'平安租赁',
-            host:config.config.distPath,
-            prod:true,
-            module:`${item}.${_version}`,
-            hash:true,
-            //选项的作用主要是针对多入口(entry)文件。当你有多个入口文件的时候，对应就会生成多个编译后的 js 文件。
-            // 那么 chunks 选项就可以决定是否都使用这些生成的 js 文件。
-            //chunks 默认会在生成的 html 文件中引用所有的 js 文件，当然你也可以指定引入哪些特定的文件。
-            chunks:[item],  //代表指定的入口文件是哪个
-            minify:{
-                removeAttributeQuotes:true,
-                collapseWhitespace:true, 
-                html5:true,
-                minifyJS:true,
-                minifyCSS:true,
-                minifyURLs:true,
-                removeComments:true,
-                removeEmptyAttributes:true,
-            }
-        })
-    )
 }
 debConfig.plugins.push(
     new CleanWebpackPlugin(
