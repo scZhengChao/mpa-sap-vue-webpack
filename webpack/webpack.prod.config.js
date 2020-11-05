@@ -16,7 +16,7 @@ let debConfig = {
     entry:entry,
     output:{
         publicPath:'',
-        filename:`[name].${_version}.js`
+        filename:`[name].${_version}.js`  //name 是对entry中条目key的引用
     },
     devtool:'inline-source-map',
     mode:'production',
@@ -76,8 +76,8 @@ for(item in entry){
     // 此处循环添加htmlwebpackplugins 的主要目的为了多入口多出口 https://blog.csdn.net/D_Z_Yong/article/details/102891802
     debConfig.plugins.push(
         new HtmlWebpackPlugin({
-            filename:'index.html',
-            template:templist.replace(/\\/g,'/'),
+            filename:'index.html', //   相对于output.path
+            template:templist.replace(/\\/g,'/'), //输入文件的相对根目录所在的目录；这个地方为绝对路径
             inject:true,
             title:'平安租赁',
             host:config.config.distPath,
@@ -87,7 +87,7 @@ for(item in entry){
             //选项的作用主要是针对多入口(entry)文件。当你有多个入口文件的时候，对应就会生成多个编译后的 js 文件。
             // 那么 chunks 选项就可以决定是否都使用这些生成的 js 文件。
             //chunks 默认会在生成的 html 文件中引用所有的 js 文件，当然你也可以指定引入哪些特定的文件。
-            chunks:[item],
+            chunks:[item],  //代表指定的入口文件是哪个
             minify:{
                 removeAttributeQuotes:true,
                 collapseWhitespace:true, 

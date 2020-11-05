@@ -19,6 +19,7 @@ spinner.start(chalk.greenBright.bold("building for production..."));
 webpack(webpackConfig,function(err,stats){
     if(err) throw new Error(err)
     spinner.succeed(chalk.greenBright.bold('build success  !'))
+    
     process.stdout.write(stats.toString({
         colors: true,
         modules: false, //去掉内置模块信息 
