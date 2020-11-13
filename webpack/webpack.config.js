@@ -8,14 +8,16 @@ const TARGET = process.env.npm_lifecycle_event;
 const clientItem = {
     dev:process.argv[2],
     server:process.argv[5],
-    build:process.argv[2]
+    build:process.argv[2],
+    buildModule:process.argv[2],
 };
 
 
 const vueLoader = {
     dev:'vue-style-loader',
     build:MiniCssExtractPlugin.loader,
-    dll:MiniCssExtractPlugin.loader
+    dll:MiniCssExtractPlugin.loader,
+    buildModule:MiniCssExtractPlugin.loader
 };
 const resolve = dir=>path.resolve(__dirname,dir)
 

@@ -20,3 +20,4 @@ css： sass  压缩
 ### 启动
 npm run dev app1,app2
 npm run build app1,app2  多个入口； 输出到多个出口； 不同目录
+npm run buildModule app1 支持命令行打包单个项目

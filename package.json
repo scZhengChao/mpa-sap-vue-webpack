@@ -5,7 +5,8 @@
   "main": "",
   "scripts": {
     "dev": "cross-env NODE_APP=development node ./webpack/server.js ",
-    "build": "cross-env NODE_APP=production node ./webpack/build.js ",
+    "build": "cross-env NODE_APP=production node ./webpack/build.js app1,app2,app3 ",
+    "buildModule":"cross-env NODE_APP=production node ./webpack/build.js",
     "build:uat": "cross-env NODE_APP=uat node ./webpack/build.js ",
     "build:sit": "cross-env NODE_APP=sit node ./webpack/build.js ",
     "dll": "webpack --progress --config webpack/webpack.dll.config.js",
